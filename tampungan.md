@@ -9,7 +9,7 @@
  * npx sequelize-cli model:generate --name Picture --attributes title:string,description:string,uploadDate:date,url:string,UserId:integer
  * 
  * Profiles
- * npx sequelize-cli model:generate --name Profiles --attributes firstname:string,lastname:string,email:string,profilePicture:string,UserId:integer
+ * npx sequelize-cli model:generate --name Profile --attributes firstname:string,lastname:string,email:string,profilePicture:string,UserId:integer
  * 
  * TagForPicture
  * npx sequelize-cli model:generate --name TagForPicture --attributes PictureId:integer,TagId:integer

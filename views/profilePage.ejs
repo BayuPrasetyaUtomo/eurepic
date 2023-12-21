@@ -1,45 +1,40 @@
-<form class="row g-3">
-  <div class="col-md-6">
-    <label for="username" class="form-label">Username</label>
-    <input
-      type="text"
-      name="username"
-      class="form-control"
-      id="username"
-      placeholder="username"
-    />
-  </div>
-  <div class="col-md-6">
-    <label for="inputPassword4" class="form-label">Password</label>
-    <input type="password" class="form-control" id="inputPassword4" placeholder="********"/>
-  </div>
-
-  <div class="col-md-6">
-    <label for="firstname" class="form-label">First Name</label>
-    <input
-      type="text"
-      name="firstname"
-      class="form-control"
-      id="firstname"
-      placeholder="John"
-    />
-  </div>
-  <div class="col-md-6">
-    <label for="lastname" class="form-label">Last Name</label>
-    <input
-      type="text"
-      name="lastname"
-      class="form-control"
-      id="lastname"
-      placeholder="Doe"
-    />
-  </div>
-  <div class="col-md-6">
-    <label for="inputEmail4" class="form-label">Email</label>
-    <input type="email" class="form-control" id="inputEmail4" />
-  </div>
-  <div class="col-md-6">
-    <label for="inputCity" class="form-label">Profile Picture</label>
-    <input type="text" class="form-control" id="inputCity" />
-  </div>
-</form>
+<div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+  <form class="row g-3" method="post" style="max-width: 500px; width: 100%;">
+    <div class="col-md-12" style="display: flex; flex-direction: column; align-items: center;">
+      <label for="username" class="form-label">Username</label>
+      <input type="text" name="username" class="form-control" id="username"
+        placeholder="username" value="<%= data ? data.username : "" %>" />
+        <% if (errors.username) { %>
+          <p class="text-danger"><%= errors.username.message %></p>
+        <% } %>
+    </div>
+    <div class="col-md-12" style="display: flex; flex-direction: column; align-items: center;">
+      <label for="inputPassword4" class="form-label">Password</label>
+      <input name="password" type="password" class="form-control"
+        placeholder="********" value="<%= data ? data.password : "" %>" />
+    </div>
+    <div class="col-md-12" style="display: flex; flex-direction: column; align-items: center;">
+      <label for="firstname" class="form-label">First Name</label>
+      <input type="text" name="firstname" class="form-control" id="firstname"
+        placeholder="John" value="<%= firstname ? firstname : "" %>" />
+    </div>
+    <div class="col-md-12" style="display: flex; flex-direction: column; align-items: center;">
+      <label for="lastname" class="form-label">Last Name</label>
+      <input type="text" name="lastname" class="form-control" id="lastname"
+        placeholder="Doe" value="<%= lastname ? lastname : "" %>" />
+    </div>
+    <div class="col-md-12" style="display: flex; flex-direction: column; align-items: center;">
+      <label class="form-label">Email</label>
+      <input type="email" class="form-control" name="email" value="<%= email ? email : "" %>" />
+    </div>
+    <div class="col-md-12" style="display: flex; flex-direction: column; align-items: center;">
+      <label for="inputCity" class="form-label">Profile Picture</label>
+      <img src="<%= profilePicture ? profilePicture : '/path/to/default/image.jpg' %>" alt="Profile Picture" class="img-fluid" style="max-width: 500px; max-height: 500px;" />
+    </div>
+    <div class="col-md-12" style="display: flex; justify-content: center; align-items: center;">
+      <button class="btn btn-primary" type="submit" style="width: 300px;">
+        <%= firstname ? "Edit" : "Add" %>
+      </button>
+    </div>
+  </form>
+</div>

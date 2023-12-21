@@ -1,7 +1,5 @@
 "use strict";
 const { Model } = require("sequelize");
-const bcrypt = require("bcryptjs");
-
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     /**
@@ -11,43 +9,66 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      User.hasOne("Profile");
-      User.hasMany("Picture");
+      User.hasOne(models.Profile);
+      User.hasMany(models.Picture);
     }
   }
   User.init(
     {
-      username: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        notNull: {
-          msg: "Username cannot be empty",
-        },
-        notEmpty: {
-          msg: "Username cannot be empty",
+      username: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          notNull: {
+            msg: "Username cannot be empty",
+          },
+          notEmpty: {
+            msg: "Username cannot be empty",
+          },
+          isUsernameValid(value) {
+            if (value.length < 8) {
+              throw new Error(
+                "Username length must be at least 8 characters long"
+              );
+            }
+          },
         },
       },
-      password: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        notNull: {
-          msg: "Password cannot be empty",
+      password: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          notNull: {
+            msg: "Password cannot be empty",
+          },
+          notEmpty: {
+            msg: "Password cannot be empty",
+          },
+          isPasswordValid(value) {
+            if (value.length < 8) {
+              throw new Error(
+                "Password length must be at least 8 characters long"
+              );
+            }
+          },
         },
-        notEmpty: {
-          msg: "Password cannot be empty",
-        },
+      },
+      role: {
+        type: DataTypes.STRING,
+        allowNull: false,
       },
     },
     {
       hooks: {
-        beforeCreate: async (User) => {
+        beforeCreate: async (user) => {
           const salt = bcrypt.genSaltSync(10);
-          User.password = bcrypt.hashSync(User.password, salt);
+          user.password = bcrypt.hashSync(user.password, salt);
         },
       },
       sequelize,
       modelName: "User",
     }
   );
+
   return User;
 };
