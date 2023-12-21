@@ -1,23 +1,44 @@
+const picture = require("../models/picture");
+
 class Controller {
-  static home(req, res) {
-    res.render("home")
+  static loginPage(req, res) {
+    const login = true;
+    res.render("_layout", { login, body: "pictureList" });
   }
 
-//   static home(req, res) {}
+  static home(req, res) {
+    res.render("home");
+  }
 
-//   static home(req, res) {}
+  static showAllPicture(req, res) {
+    res.render("pictureList");
+  }
 
-//   static home(req, res) {}
+  static submitPicture(req, res) {
+    res.send("Picture successfully uploaded");
+  }
 
-//   static home(req, res) {}
+  static userProfilePage(req, res) {
+    const login = true
+    const renderData = {
+      login,
+      body: "profilePage",
+    };
+    res.render("_layout", renderData);
+  }
+  //   static home(req, res) {}
 
-//   static home(req, res) {}
+  //   static home(req, res) {}
 
-//   static home(req, res) {}
+  //   static home(req, res) {}
 
-//   static home(req, res) {}
+  //   static home(req, res) {}
 
-//   static home(req, res) {}
+  //   static home(req, res) {}
+
+  //   static home(req, res) {}
+
+  //   static home(req, res) {}
 }
 
 module.exports = Controller;
