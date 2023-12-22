@@ -12,12 +12,6 @@
     />
   </head>
   <body style="background-color: grey">
-    <% if (userId) { %>
-      <!-- Add this logout button if the user is logged in -->
-      <form action="/logout" method="POST" class="ms-auto">
-        <button class="btn btn-outline-danger" type="submit">Logout</button>
-      </form>
-    <% } %>
     <%- include("_navbar") %>
     <%- include(body) %>
     <script

@@ -98,26 +98,13 @@ class Controller {
         lastname,
         email,
         profilePicture,
-        errors: [],
       };
 
       console.log(dataUser);
+      // res.json(dataUser)
       res.render("_layout", renderData);
     } catch (error) {
-      if (error.name === "SequelizeValidationError") {
-        const validationErrors = error.errors.map((item) => ({
-          field: item.path,
-          message: item.message,
-        }));
-        res.render("_layout", {
-          body: "profilePage",
-          errors: validationErrors,
-        });
-      } else {
-        // Handle other errors
-        console.error(error);
-        res.send(error);
-      }
+      res.send(error)
     }
   }
 

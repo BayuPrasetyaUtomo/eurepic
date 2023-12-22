@@ -18,7 +18,6 @@ module.exports = (sequelize, DataTypes) => {
   Picture.init({
     title: DataTypes.STRING,
     description: DataTypes.STRING,
-    uploadDate: DataTypes.DATE,
     url: DataTypes.STRING,
     UserId: DataTypes.INTEGER
   }, {

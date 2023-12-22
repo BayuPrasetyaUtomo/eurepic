@@ -17,9 +17,13 @@ const {
 } = Controller;
 
 const isLogin = (req, res, next) => {
-  const { userId } = req.session;
-  res.locals.userId = userId;
-  return next();
+  const { username } = req.session;
+
+  if (username) {
+      return res.redirect("/");
+  }
+
+  next();
 };
 
 const storage = multer.diskStorage({
@@ -34,9 +38,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-router.use(isLogin);
-
-router.get("/login", formLoginPage);
+router.get("/login", isLogin, formLoginPage);
 router.post("/login", loginPage);
 router.get("/logout", logout);
 

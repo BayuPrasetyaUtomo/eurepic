@@ -4,9 +4,6 @@
       <label for="username" class="form-label">Username</label>
       <input type="text" name="username" class="form-control" id="username"
         placeholder="username" value="<%= data ? data.username : "" %>" />
-        <% if (errors.username) { %>
-          <p class="text-danger"><%= errors.username.message %></p>
-        <% } %>
     </div>
     <div class="col-md-12" style="display: flex; flex-direction: column; align-items: center;">
       <label for="inputPassword4" class="form-label">Password</label>

@@ -1,17 +1,9 @@
-<div
-  style="
-    justify-content: center;
-    display: flex;
-    align-items: center;
-    padding: 100px;
-  "
->
-  <form style="text-align: center" method="post">
+<div style="justify-content: center; display: flex; align-items: center; padding: 100px;">
+  <form style="text-align: center" method="post" action="/login">
     <div class="mb-3">
       <label class="form-label">Username</label>
-
       <input
-        type="username"
+        type="text"
         class="container form-control"
         placeholder="Input your username here"
         aria-describedby="emailHelp"
@@ -31,9 +23,9 @@
       />
     </div>
     <div class="mb-3 form-check">
-      <input type="checkbox" class="form-check-input" id="remember" />
+      <input type="checkbox" class="form-check-input" id="remember" name="remember" />
       <label class="form-check-label" for="remember">Remember me</label>
     </div>
-    <button type="login" class="btn btn-primary">Login</button>
+    <button type="submit" class="btn btn-primary">Login</button>
   </form>
 </div>

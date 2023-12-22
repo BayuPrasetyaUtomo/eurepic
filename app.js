@@ -5,7 +5,7 @@ const session = require("express-session");
 const app = express();
 const port = 7788;
 
-// app.use(express.static(__dirname + "/public"));
+app.use("/images", express.static("images"));
 
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
